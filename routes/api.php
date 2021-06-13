@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -22,6 +21,7 @@ use App\Http\Controllers\UserController;
  * Route used in registering a user
  * Data : name, email,password,confirm_password
  */
+
 Route::post('/register',[AuthController::class,'register']);
 /**
  * Route Used in Logging USer on the
@@ -70,3 +70,4 @@ Route::fallback(function(){
         'success' =>false
     ],404);
     });
+

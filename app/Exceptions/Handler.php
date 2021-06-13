@@ -35,16 +35,9 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        $this->renderable(function (MethodNotAllowedHttpException $e) {
             return response([
-                'message' => 'An error occured',
-                'status' => false,
-            ],404);
-        });
-
-        $this->reportable(function (MethodNotAllowedHttpException $e) {
-            return response([
-                'message' => 'method not allowed on route',
+                'message' => 'there is an error accessing this route',
                 'status' => false,
             ],404);
         });
