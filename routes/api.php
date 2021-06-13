@@ -15,55 +15,19 @@ use App\Http\Controllers\UserController;
 |
 */
 
-
-// Public Routes
-/**
- * Route used in registering a user
- * Data : name, email,password,password_confirmation
- */
-
 Route::post('/register',[AuthController::class,'register']);
-/**
- * Route Used in Logging USer on the
- * Data : email,password
-*/
 Route::post('/login',[AuthController::class,'login']);
 
 
 //Protected Routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
-
-    Route::prefix('user/{id}')->group(function () {
-    /**
-     * Fetch User Data
-     * Data : USer id on the user table
-     */
-    Route::get('',[UserController::class,'show']);
-    /**
-     * Route Updates User Data
-     * Data : USer id on the user table
-     */
-    Route::put('',[UserController::class,'update']);
-    /**
-     * Route Deletes User Data
-     * Data : USer id on the user table
-     */
-    Route::delete('',[UserController::class,'destroy']);
-    });
-
-
-
-    /**
-     * Route Deletes user authentication used to login
-     * Data : USer id on the user table
-     */
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::resource('user', UserController::class)->only([
+        'show', 'update','destroy'
+    ]);
     Route::post('logout',[AuthController::class,'logout']);
 
 });
-//
-/**
- * this function is called when the api route called does not exist
- */
+
 Route::fallback(function(){
     return response([
         'message' => 'route not found',
