@@ -4,29 +4,29 @@
 ## About 
 
 This project is powered by Laravel 8 
-it is a backend api which all routes return a json value
+it is a backend api which all routes return a json value <br>
 Accept : application/json
 
 ## Authentication
 
-Laravel Sanctum is used to for user authentication and token Management
+Laravel Sanctum is used to for user authentication and token Management<br>
 Authorization : Bearer Token
 
 ## Routes
-Note : hosturl is the url of the server hosting the api
-accessibility : This indicates if a route is a protected route or a public route
-{id} : This is a variable in the route and it should be replaced with the corresponding id of the user, 
-as it is saved on the user table
-method : this is the http request method by which the request is sent
+Note : hosturl is the url of the server hosting the api <br>
+accessibility : This indicates if a route is a protected route or a public route <br>
+{id} : This is a variable in the route and it should be replaced with the corresponding id of the user, <br>
+as it is saved on the user table<br>
+method : this is the http request method by which the request is sent<br>
 
-Login :
-    route : hosturl/api/login
-    method : POST,
+Login : <br>
+    route : hosturl/api/login <br>
+    method : POST,<br>
     formData : {
         email : 'demo@assessment.com,
         password : '123456'
     }
-    accessibility: public
+    accessibility: public<br>re
 
 Register : 
     route : hosturl/api/register
