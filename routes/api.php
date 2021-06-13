@@ -15,23 +15,21 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::post('/register',[AuthController::class,'register']);
-Route::post('/login',[AuthController::class,'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 
 //Protected Routes
-    Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('user', UserController::class)->only([
-        'show', 'update','destroy'
+        'show', 'update', 'destroy'
     ]);
-    Route::post('logout',[AuthController::class,'logout']);
-
+    Route::post('logout', [AuthController::class, 'logout']);
 });
 
-Route::fallback(function(){
+Route::fallback(function () {
     return response([
         'message' => 'route not found',
-        'success' =>false
-    ],404);
-    });
-
+        'success' => false
+    ], 404);
+});
