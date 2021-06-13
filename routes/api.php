@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 // Public Routes
 /**
  * Route used in registering a user
@@ -32,21 +33,26 @@ Route::post('/login',[AuthController::class,'login']);
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
+    Route::prefix('user')->group(function () {
     /**
      * Fetch User Data
      * Data : USer id on the user table
      */
-    Route::get('/user/{id}',[UserController::class,'show']);
+    Route::get('/{id}',[UserController::class,'show']);
     /**
      * Route Updates User Data
      * Data : USer id on the user table
      */
-    Route::put('/user/{id}',[UserController::class,'update']);
+    Route::put('/{id}',[UserController::class,'update']);
     /**
      * Route Deletes User Data
      * Data : USer id on the user table
      */
-    Route::delete('/user/{id}',[UserController::class,'destroy']);
+    Route::delete('/{id}',[UserController::class,'destroy']);
+    });
+
+
+
     /**
      * Route Deletes user authentication used to login
      * Data : USer id on the user table
@@ -63,5 +69,4 @@ Route::fallback(function(){
         'message' => 'route not found',
         'success' =>false
     ],404);
-});
-
+    });

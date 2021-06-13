@@ -75,7 +75,11 @@ class AuthController extends Controller
     {
 
        auth()->user()->tokens()->delete();
-        return response(['message' => true]);
+        return response(
+            [
+                'message' => 'user logged out',
+                'success' => true
+        ]);
     }
 
     public function getCurrentUser(){

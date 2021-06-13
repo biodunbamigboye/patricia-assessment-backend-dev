@@ -93,6 +93,11 @@ return response( [
     public function destroy($id)
     {
         if(!$this->isUserValid($id)) return $this->errorResponse();
-        return User::destroy($id);
+        $delete = User::destroy($id);
+        $message = $delete ? 'User Deleted' : 'operation not Successful';
+        return [
+            'message' => $message,
+            'success' => (bool) $delete
+        ];
     }
 }

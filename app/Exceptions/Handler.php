@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -35,7 +36,17 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
+            return response([
+                'message' => 'An error occured',
+                'status' => false,
+            ],404);
+        });
 
+        $this->reportable(function (MethodNotAllowedHttpException $e) {
+            return response([
+                'message' => 'method not allowed on route',
+                'status' => false,
+            ],404);
         });
     }
 }
