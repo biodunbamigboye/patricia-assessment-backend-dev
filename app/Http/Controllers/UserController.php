@@ -17,14 +17,14 @@ class UserController extends Controller
      */
     public function show($id)
     {
-    if(!$this->isUserValid($id)) return $this->errorResponse();
-    $user= USer::find($id);
-    $response = [
-        'user' => $user,
-        'message' => 'user data fetched',
-        'success' => true
-    ];
-    return $response;
+        if (!$this->isUserValid($id)) return $this->errorResponse();
+        $user = USer::find($id);
+        $response = [
+            'user' => $user,
+            'message' => 'user data fetched',
+            'success' => true
+        ];
+        return $response;
     }
 
     /**
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!$this->isUserValid($id)) return $this->errorResponse();
+        if (!$this->isUserValid($id)) return $this->errorResponse();
         $fields = $request->validate([
             'name' => ' string',
             'email' => 'string|unique:users,email|email',
@@ -56,7 +56,6 @@ class UserController extends Controller
             'success' => true
         ];
         return $response;
-
     }
     /**
      *
@@ -68,22 +67,24 @@ class UserController extends Controller
      *
      */
 
-    public function isUserValid($id){
-        return (auth()->user()->id==$id);
+    public function isUserValid($id)
+    {
+        return (auth()->user()->id == $id);
     }
 
     /**
- * Error message thrown when a user is not
- * authorized to perform an action
- *
- * @return Object
- */
-protected function errorResponse(){
-return response( [
-    'message' => 'unauthorized access',
-    'success' => false
-],401);
-}
+     * Error message thrown when a user is not
+     * authorized to perform an action
+     *
+     * @return Object
+     */
+    protected function errorResponse()
+    {
+        return response([
+            'message' => 'unauthorized access',
+            'success' => false
+        ], 401);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -92,7 +93,7 @@ return response( [
      */
     public function destroy($id)
     {
-        if(!$this->isUserValid($id)) return $this->errorResponse();
+        if (!$this->isUserValid($id)) return $this->errorResponse();
         $delete = User::destroy($id);
         $message = $delete ? 'User Deleted' : 'operation not Successful';
         return [
