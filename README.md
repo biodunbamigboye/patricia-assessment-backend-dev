@@ -1,16 +1,16 @@
-<p align="center">Patricia Backend Developer Intern Assessment  (API)</p>
+<h1 align="center">Patricia Backend Developer Intern Assessment  (API)</h1>
 
 
 ## About 
 
-This project is powered by Laravel 8 
+This project is powered by Laravel 8 <br>
 it is a backend api which all routes return a json value <br>
-Accept : application/json
+Accept : application/json<br><br>
 
 ## Authentication
 
 Laravel Sanctum is used to for user authentication and token Management<br>
-Authorization : Bearer Token
+Authorization : Bearer Token<br><br>
 
 ## Routes
 Note : hosturl is the url of the server hosting the api <br>
@@ -25,55 +25,55 @@ Login : <br>
     formData : {
         email : 'demo@assessment.com,
         password : '123456'
-    }
-    accessibility: public<br>re
+    }<br>
+    accessibility: public<br><br>
 
-Register : 
-    route : hosturl/api/register
-    method : POST,
+Register : <br>
+    route : hosturl/api/register<br>
+    method : POST,<br>
     formData : {
         email : 'demo@assessment.com',
         name :'Demo Name',
         password : '123456',
         password_confirmation : '123456'
-    }
-    accessibility : public
+    }<br>
+    accessibility : public<br><br>
 
-Update : 
-    route : hosturl/api/update
-    method : PUT,
+Update : <br>
+    route : hosturl/api/update<br>
+    method : PUT,<br>
     formData : {
         email : 'optional',
         name : 'optional',
         password : 'optional'
-    }
-    accessibility : protected
+    }<br>
+    accessibility : protected<br><br>
 
-Fetch User Data : 
-    route : hosturl/api/user/{id}
-    method : GET  
-    accesibility : protected
+Fetch User Data : <br>
+    route : hosturl/api/user/{id}<br>
+    method : GET  <br>
+    accesibility : protected<br><br>
 
-Delete :
-    route : hosturl/api/user/{id}
-    method : delete
-    accesibility : protected
+Delete :<br>
+    route : hosturl/api/user/{id}<br>
+    method : delete<br>
+    accesibility : protected<br><br>
 
-Logout :
-    route : hosturl/api/logout
-    method : POST
-    accesibility : protected
+Logout :<br>
+    route : hosturl/api/logout<br>
+    method : POST<br>
+    accesibility : protected<br><br>
 
-## Error Reporting
-all error responses is in this format
+## Error Reporting<br>
+all error responses is in this format<br>
 {
     message : 'error message'
     success : boolean
-}
-if the operation is successful the success value will be true and
-if the operation is not successful the success value will be false
+}<br><br>
+if the operation is successful the success value will be true and<br>
+if the operation is not successful the success value will be false<br>
 
-Note that authenticated users are not given the permission to access
+Note that authenticated users are not given the permission to access<br>
 resources belonging to another user
 
 
