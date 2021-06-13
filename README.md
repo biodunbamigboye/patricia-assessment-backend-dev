@@ -1,62 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center">Patricia Backend Developer Intern Assessment  (API)</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project is powered by Laravel 8 
+it is a backend api which all routes return a json value
+Accept : application/json
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Authentication
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Laravel Sanctum is used to for user authentication and token Management
+Authorization : Bearer Token
 
-## Learning Laravel
+## Routes
+Note : hosturl is the url of the server hosting the api
+accessibility : This indicates if a route is a protected route or a public route
+{id} : This is a variable in the route and it should be replaced with the corresponding id of the user, 
+as it is saved on the user table
+method : this is the http request method by which the request is sent
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Login :
+    route : hosturl/api/login
+    method : POST,
+    formData : {
+        email : 'demo@assessment.com,
+        password : '123456'
+    }
+    accessibility: public
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Register : 
+    route : hosturl/api/register
+    method : POST,
+    formData : {
+        email : 'demo@assessment.com',
+        name :'Demo Name',
+        password : '123456',
+        password_confirmation : '123456'
+    }
+    accessibility : public
 
-## Laravel Sponsors
+Update : 
+    route : hosturl/api/update
+    method : PUT,
+    formData : {
+        email : 'optional',
+        name : 'optional',
+        password : 'optional'
+    }
+    accessibility : protected
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Fetch User Data : 
+    route : hosturl/api/user/{id}
+    method : GET  
+    accesibility : protected
 
-### Premium Partners
+Delete :
+    route : hosturl/api/user/{id}
+    method : delete
+    accesibility : protected
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+Logout :
+    route : hosturl/api/logout
+    method : POST
+    accesibility : protected
 
-## Contributing
+## Error Reporting
+all error responses is in this format
+{
+    message : 'error message'
+    success : boolean
+}
+if the operation is successful the success value will be true and
+if the operation is not successful the success value will be false
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Note that authenticated users are not given the permission to access
+resources belonging to another user
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
