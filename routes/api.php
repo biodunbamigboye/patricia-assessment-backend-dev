@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 // Public Routes
 /**
  * Route used in registering a user
- * Data : name, email,password,confirm_password
+ * Data : name, email,password,password_confirmation
  */
 
 Route::post('/register',[AuthController::class,'register']);
