@@ -33,22 +33,22 @@ Route::post('/login',[AuthController::class,'login']);
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::prefix('user')->group(function () {
+    Route::prefix('user/{id}')->group(function () {
     /**
      * Fetch User Data
      * Data : USer id on the user table
      */
-    Route::get('/{id}',[UserController::class,'show']);
+    Route::get('',[UserController::class,'show']);
     /**
      * Route Updates User Data
      * Data : USer id on the user table
      */
-    Route::put('/{id}',[UserController::class,'update']);
+    Route::put('',[UserController::class,'update']);
     /**
      * Route Deletes User Data
      * Data : USer id on the user table
      */
-    Route::delete('/{id}',[UserController::class,'destroy']);
+    Route::delete('',[UserController::class,'destroy']);
     });
 
 
