@@ -4,8 +4,8 @@
 ## About 
 
 This project is powered by Laravel 8 <br>
-it is a backend api which all routes return a json value <br>
-Accept : application/json<br><br>
+Accept : application/json<br>
+Returns : JSON <br><br>
 
 ## Authentication
 
