@@ -5,7 +5,8 @@
 
 This project is powered by Laravel 8 <br>
 Accept : application/json<br>
-Returns : JSON <br><br>
+Returns : JSON <br>
+Postman Documentation :  https://documenter.getpostman.com/view/8843198/TzeTKpyR <br><br>
 
 ## Authentication
 
